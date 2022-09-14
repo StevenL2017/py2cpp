@@ -5,12 +5,14 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include "corr.h"
+#include "dtw.h"
 
 namespace py = pybind11;
 
 PYBIND11_MODULE(py2cpp, m) {
     m.doc() = "py2cpp module";
     m.def("corrcoef", &pearson_correlation);
+    m.def("dtw", &dtw_distance);
 }
 
 //int main() {

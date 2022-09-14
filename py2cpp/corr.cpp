@@ -1,11 +1,12 @@
+#include "corr.h"
 #include <iostream>
 #include <cmath>
 #include <vector>
 
-double pearson_correlation(std::vector<double>& x, std::vector<double>& y) {
-    int n = x.size();
+double pearson_correlation(const std::vector<double>& x, const std::vector<double>& y) {
+    const int n = static_cast<int>(x.size());
 
-    if (x.size() != y.size()) {
+    if (n != y.size()) {
         std::cout << "Make sure the vectors have the same number of values for the correlation function!" << std::endl;
         return 0;
     }
