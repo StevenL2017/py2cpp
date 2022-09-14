@@ -78,7 +78,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetExt>.pyd</TargetExt>
     <IncludePath>C:\ProgramData\Anaconda3\include;C:\ProgramData\Anaconda3\Lib\site-packages\pybind11\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\ProgramData\Anaconda3\Lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\ProgramData\Anaconda3\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -119,6 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python3.lib;python39.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
