@@ -34,9 +34,10 @@
 
 # More
 *.vs
+*.exp
 *.log
 *.tlog
 *.pdb
 *.ipdb
-*.exp
 *.pyd
+*.recipe
