@@ -15,6 +15,8 @@ PYBIND11_MODULE(py2cpp, m) {
     m.def("corrcoef", &pearson_correlation);
     m.def("dtw", &dtw_distance);
     m.def("adjust_dpath", &adjust_dpath);
+    m.def("logcosh1", &logcosh1);
+    m.def("logcosh2", &logcosh2);
 }
 
 //int main() {
