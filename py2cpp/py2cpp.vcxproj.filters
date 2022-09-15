@@ -24,12 +24,18 @@
     <ClCompile Include="dtw.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="causal.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="corr.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dtw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="causal.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

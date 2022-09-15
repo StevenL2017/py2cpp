@@ -140,11 +140,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="causal.cpp" />
     <ClCompile Include="corr.cpp" />
     <ClCompile Include="dtw.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="causal.h" />
     <ClInclude Include="corr.h" />
     <ClInclude Include="dtw.h" />
   </ItemGroup>
