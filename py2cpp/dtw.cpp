@@ -14,7 +14,7 @@ double dtw_distance(const std::vector<double>& x, const std::vector<double>& y) 
     d[0][0] = 0;
     double dist;
 
-    // Determine the optimal dtw path via dynamic programming,
+    // Determine the optimal dtw path via dynamic programming
     for (int i = 1; i <= nx; i++) {
         for (int j = 1; j <= ny; j++) {
             dist = std::abs(x[i - 1] - y[j - 1]);
