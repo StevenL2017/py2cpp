@@ -2,7 +2,7 @@
 #include <cmath>
 #include <vector>
 
-void adjust_dpath(std::vector<std::vector<int>> &dpath, int &i, int &j, int &n) {
+void adjust_dpath(std::vector<std::vector<int>>& dpath, int& i, int& j, int& n) {
 	dpath[j][i] = 1;
 	for (int k = 0; k < n; k++) {
 		if (dpath[i][k] == 1) {
@@ -15,7 +15,7 @@ void adjust_dpath(std::vector<std::vector<int>> &dpath, int &i, int &j, int &n) 
 	return;
 }
 
-std::vector<std::vector<double>> logcosh1(std::vector<std::vector<double>> &x, double &alpha) {
+std::vector<std::vector<double>> logcosh1(std::vector<std::vector<double>>& x, double& alpha) {
 	const int m = static_cast<int>(x.size());
 	const int n = static_cast<int>(x[0].size());
 
@@ -28,7 +28,7 @@ std::vector<std::vector<double>> logcosh1(std::vector<std::vector<double>> &x, d
 	return gx;
 }
 
-std::vector<double> logcosh2(std::vector<std::vector<double>> &gx, double &alpha) {
+std::vector<double> logcosh2(std::vector<std::vector<double>>& gx, double& alpha) {
 	const int m = static_cast<int>(gx.size());
 	const int n = static_cast<int>(gx[0].size());
 
@@ -37,7 +37,7 @@ std::vector<double> logcosh2(std::vector<std::vector<double>> &gx, double &alpha
 		for (int j = 0; j < n; j++) {
 			g_x[i] = g_x[i] + alpha * (1 - gx[i][j] * gx[i][j]);
 		}
-		g_x[i] = (double) g_x[i] / n;
+		g_x[i] = (double)g_x[i] / n;
 	}
 	return g_x;
 }

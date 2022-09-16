@@ -3,7 +3,7 @@
 #include <cmath>
 #include <vector>
 
-double pearson_correlation(const std::vector<double> &x, const std::vector<double> &y) {
+double pearson_correlation(const std::vector<double>& x, const std::vector<double>& y) {
     const int n = static_cast<int>(x.size());
 
     if (n != y.size()) {

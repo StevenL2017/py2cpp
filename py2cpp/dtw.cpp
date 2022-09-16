@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-double dtw_distance(const std::vector<double> &x, const std::vector<double> &y) {
+double dtw_distance(const std::vector<double>& x, const std::vector<double>& y) {
     // initialize constants
     const int nx = static_cast<int>(x.size());
     const int ny = static_cast<int>(y.size());
@@ -25,7 +25,7 @@ double dtw_distance(const std::vector<double> &x, const std::vector<double> &y) 
     for (int i = 1; i < nx; i++) {
         for (int j = 1; j < ny; j++) {
             dist = std::abs(x[i] - y[j]);
-            d[i][j] = dist + std::min({d[i - 1][j], d[i][j - 1], d[i - 1][j - 1]});
+            d[i][j] = dist + std::min({ d[i - 1][j], d[i][j - 1], d[i - 1][j - 1] });
         }
     }
     return d[nx - 1][ny - 1];
