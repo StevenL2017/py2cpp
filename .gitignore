@@ -41,3 +41,4 @@
 *.ipdb
 *.pyd
 *.recipe
+*.vcxproj.FileListAbsolute.txt
