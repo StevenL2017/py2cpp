@@ -3,8 +3,13 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <pybind11/embed.h>
+
+namespace py = pybind11;
 
 double dtw_distance(const std::vector<double>& x, const std::vector<double>& y) {
+    py::gil_scoped_release release; // 释放GIL锁
+
     // initialize constants
     const int nx = static_cast<int>(x.size());
     const int ny = static_cast<int>(y.size());
@@ -21,5 +26,7 @@ double dtw_distance(const std::vector<double>& x, const std::vector<double>& y) 
             d[i][j] = dist + std::min({ d[i - 1][j], d[i][j - 1], d[i - 1][j - 1] });
         }
     }
+
+    py::gil_scoped_acquire acquire; // C++执行结束前恢复GIL锁
     return d[nx][ny];
 }

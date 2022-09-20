@@ -2,8 +2,13 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <pybind11/embed.h>
+
+namespace py = pybind11;
 
 double pearson_correlation(const std::vector<double>& x, const std::vector<double>& y) {
+    py::gil_scoped_release release; // ÊÍ·ÅGILËø
+
     const int n = static_cast<int>(x.size());
 
     if (n != y.size()) {
@@ -25,5 +30,8 @@ double pearson_correlation(const std::vector<double>& x, const std::vector<doubl
         sum_y_squared = sum_y_squared + y[i] * y[i];
     }
 
-    return (double)(n * sum_xy - sum_x * sum_y) / (sqrt(n * sum_x_squared - sum_x * sum_x) * sqrt(n * sum_y_squared - sum_y * sum_y));
+    double ans = (double)(n * sum_xy - sum_x * sum_y) / (sqrt(n * sum_x_squared - sum_x * sum_x) * sqrt(n * sum_y_squared - sum_y * sum_y));
+
+    py::gil_scoped_acquire acquire; // C++Ö´ÐÐ½áÊøÇ°»Ö¸´GILËø
+    return ans;
 }
