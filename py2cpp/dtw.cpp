@@ -1,11 +1,4 @@
 #include "dtw.h"
-#include <iostream>
-#include <cmath>
-#include <vector>
-#include <algorithm>
-#include <pybind11/embed.h>
-
-namespace py = pybind11;
 
 double dtw_distance(const std::vector<double>& x, const std::vector<double>& y) {
     py::gil_scoped_release release; // ÊÍ·ÅGILËø

@@ -1,58 +1,30 @@
 #include "causal.h"
-#include <cmath>
-#include <vector>
-#include <pybind11/embed.h>
 
-namespace py = pybind11;
-
-std::vector<std::vector<int>> adjust_dpath(std::vector<std::vector<int>>& dpath, int& i, int& j, int& n) {
-	py::gil_scoped_release release; // ÊÍ·ÅGILËø
-
-	dpath[j][i] = 1;
+void adjust_dpath(Eigen::Ref<Eigen::MatrixXi> dpath, int& i, int& j, int& n) {
+	dpath(j, i) = 1;
 	for (int k = 0; k < n; k++) {
-		if (dpath[i][k] == 1) {
-			dpath[j][k] = 1;
+		if (dpath(i, k) == 1) {
+			dpath(j, k) = 1;
 		}
-		if (dpath[k][j] == 1) {
-			dpath[k][i] = 1;
+		if (dpath(k, j) == 1) {
+			dpath(k, i) = 1;
 		}
 	}
-
-	py::gil_scoped_acquire acquire; // C++Ö´ÐÐ½áÊøÇ°»Ö¸´GILËø
-	return dpath;
+	return;
 }
 
-std::vector<std::vector<double>> logcosh1(std::vector<std::vector<double>>& x, double& alpha) {
-	py::gil_scoped_release release; // ÊÍ·ÅGILËø
+Eigen::VectorXd logcosh(Eigen::Ref<Eigen::MatrixXd> x, double& alpha) {
+	const int m = static_cast<int>(x.rows());
+	const int n = static_cast<int>(x.cols());
 
-	const int m = static_cast<int>(x.size());
-	const int n = static_cast<int>(x[0].size());
-
-	std::vector<std::vector<double>> gx(m, std::vector<double>(n));
+	x *= alpha;
+	Eigen::VectorXd g_x(m);
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
-			gx[i][j] = std::tanh(x[i][j] * alpha);
+			x(i, j) = std::tanh(x(i, j));
+			g_x(i) += alpha * (1 - x(i, j) * x(i, j));
 		}
+		g_x(i) = (double)g_x(i) / n;
 	}
-
-	py::gil_scoped_acquire acquire; // C++Ö´ÐÐ½áÊøÇ°»Ö¸´GILËø
-	return gx;
-}
-
-std::vector<double> logcosh2(std::vector<std::vector<double>>& gx, double& alpha) {
-	py::gil_scoped_release release; // ÊÍ·ÅGILËø
-
-	const int m = static_cast<int>(gx.size());
-	const int n = static_cast<int>(gx[0].size());
-
-	std::vector<double> g_x(m);
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			g_x[i] = g_x[i] + alpha * (1 - gx[i][j] * gx[i][j]);
-		}
-		g_x[i] = (double)g_x[i] / n;
-	}
-
-	py::gil_scoped_acquire acquire; // C++Ö´ÐÐ½áÊøÇ°»Ö¸´GILËø
 	return g_x;
 }
