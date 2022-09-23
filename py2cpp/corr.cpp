@@ -32,10 +32,9 @@ double pearson_correlation(const std::vector<double>& x, const std::vector<doubl
 
 std::vector<int> rank(const std::vector<double>& x) {
     const int n = static_cast<int>(x.size());
-    std::vector<int> index(n, 0);
-    for (int i = 0; i < n; i++) {
-        index[i] = i;
-    }
+
+    std::vector<int> index(n);
+    std::iota(index.begin(), index.end(), 0);
     std::sort(index.begin(), index.end(), [&x](int i, int j) {return (x[i] > x[j]);});
 
     std::vector<int> rank(n);
