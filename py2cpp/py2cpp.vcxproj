@@ -209,6 +209,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\minepy\libmine\cppmine.cpp" />
+    <ClCompile Include="..\..\minepy\libmine\mine.c" />
     <ClCompile Include="causal.cpp" />
     <ClCompile Include="corr.cpp" />
     <ClCompile Include="dtw.cpp" />

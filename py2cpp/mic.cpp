@@ -10,8 +10,8 @@ double mic_correlation(const std::vector<double>& x, const std::vector<double>& 
         return 0;
     }
 
-    double* xa = new double(n);
-    double* ya = new double(n);
+    double* xa = new double[n];
+    double* ya = new double[n];
     memcpy(xa, &x[0], n * sizeof(x[0]));
     memcpy(ya, &y[0], n * sizeof(y[0]));
 
