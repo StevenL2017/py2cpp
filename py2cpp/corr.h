@@ -9,3 +9,4 @@
 namespace py = pybind11;
 
 double pearson_correlation(const std::vector<double>& x, const std::vector<double>& y);
+double spearman_correlation(const std::vector<double>& x, const std::vector<double>& y);

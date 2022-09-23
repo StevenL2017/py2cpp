@@ -102,6 +102,7 @@
     <IncludePath>C:\ProgramData\Anaconda3\include;C:\ProgramData\Anaconda3\Lib\site-packages\pybind11\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\ProgramData\Anaconda3\libs;$(LibraryPath)</LibraryPath>
     <TargetExt>.pyd</TargetExt>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|x64'">
     <IncludePath>C:\ProgramData\Anaconda3\envs\py37\include;C:\ProgramData\Anaconda3\envs\py37\Lib\site-packages\pybind11\include;$(IncludePath)</IncludePath>
@@ -179,7 +180,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\cpp\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\minepy\libmine;D:\cpp\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -197,7 +198,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\cpp\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\minepy;D:\cpp\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -212,11 +213,13 @@
     <ClCompile Include="corr.cpp" />
     <ClCompile Include="dtw.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="causal.h" />
     <ClInclude Include="corr.h" />
     <ClInclude Include="dtw.h" />
+    <ClInclude Include="mic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
